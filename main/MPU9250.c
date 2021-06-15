@@ -15,8 +15,8 @@ int MPU9250_get_acc(int * pX ,int * pY, int * pZ){
 	
 	I2C_readRegisters(ACC_I2C_ADDRES,ACCEL_XOUT_H,accTemp,6);
 
-	*pX = (int)(((accTemp[0]<<8)|accTemp[1])*(ADC2mg));
-	*pY = (int)(((accTemp[2]<<8)|accTemp[3])*(ADC2mg));
-	*pZ = (int)(((accTemp[4]<<8)|accTemp[5])*(ADC2mg));
+	*pX = (int)(((int16_t)(accTemp[0]<<8)|accTemp[1])*(ADC2mg));
+	*pY = (int)(((int16_t)(accTemp[2]<<8)|accTemp[3])*(ADC2mg));
+	*pZ = (int)(((int16_t)(accTemp[4]<<8)|accTemp[5])*(ADC2mg));
 	return 0;
 }
